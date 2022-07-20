@@ -1,5 +1,5 @@
 homepage: "https://github.com/LukasFibiger/zbozicz-Tag-For-SGTM"
 documentation: "https://github.com/LukasFibiger/zbozicz-Tag-For-SGTM"
 versions:
-  - sha: 9aa9a7522c613b0babd45354570ecd5bdc86bde6
+  - sha: ce4dd9f9de7ef85e5a0f145558c39e7fe4d52832
     changeNotes: Initial release.
