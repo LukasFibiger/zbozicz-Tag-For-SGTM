@@ -1,11 +1,4 @@
-﻿___TERMS_OF_SERVICE___
-
-By creating or modifying this file you agree to Google Tag Manager's Community
-Template Gallery Developer Terms of Service available at
-https://developers.google.com/tag-manager/gallery-tos (or such other URL as
-Google may provide), as modified from time to time.
-
-___INFO___
+﻿___INFO___
 
 {
   "type": "TAG",
@@ -13,7 +6,6 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "Zbozi.cz conversion",
-  "categories": ["ADVERTISING", "CONVERSIONS"],  
   "brand": {
     "id": "brand_dummy",
     "displayName": "",
@@ -123,6 +115,7 @@ ___SANDBOXED_JS_FOR_SERVER___
 const JSON = require('JSON');
 const logToConsole = require('logToConsole');
 const sendHttpRequest = require('sendHttpRequest');
+const encodeUri = require('encodeUri');
 
 
 //If debug_mode On, write complete JSON to Console
@@ -161,10 +154,10 @@ if (typeof data.products != 'undefined') {
 
 //When  I have sandbox
 if (data.sandbox == true) {
-  var url_api = 'https://sandbox.zbozi.cz/action/'+data.ShopId+'/conversion/backend';
+  var url_api = 'https://sandbox.zbozi.cz/action/'+encodeUri(data.ShopId)+'/conversion/backend';
   post_data.sandbox = true ;
 } else {
-  var url_api = 'https://www.zbozi.cz/action/'+data.ShopId+'/conversion/backend';
+  var url_api = 'https://www.zbozi.cz/action/'+encodeUri(data.ShopId)+'/conversion/backend';
 }
 
 //If debug_mode On, write complete JSON to Console
