@@ -1,5 +1,5 @@
 homepage: "https://github.com/LukasFibiger/zbozicz-Tag-For-SGTM"
 documentation: "https://github.com/LukasFibiger/zbozicz-Tag-For-SGTM"
 versions:
-  - sha: 06dc5790ca0bdae3d9903c3c2d799d3f064deaed
-    changeNotes: Add EncodeUri()
+  - sha: 5217525085a5de3940ce73e0a9fa004a877b87d9
+    changeNotes: Change style input for standard/sandbox.
