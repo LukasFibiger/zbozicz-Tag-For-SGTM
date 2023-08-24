@@ -45,9 +45,9 @@ ___TEMPLATE_PARAMETERS___
   {
     "type": "TEXT",
     "name": "products",
-    "displayName": "Products from GA/GA4",
+    "displayName": "Products from GA4",
     "simpleValueType": true,
-    "help": "As google enahnced ecommerce format.Example: \n[{  \n  id: 4149,\n  name: \"T-shirt red\",\n  price: 557.82,\n  categories: [\"Clothes\", \"T-shirts\"],\n  quantity: 2 \n}, {\n  id: 4296,\n  name: \"T-shirt blue\",\n  price: 125.61,\n  categories: [\"Clothes\", \"T-shirts\"],\n  quantity: 1 \n}]"
+    "help": "As google enahnced ecommerce format.Example: \n[{  \n  item_id: 4149,\n  item_name: \"T-shirt red\",\n  price: 557.82,\n  quantity: 2 \n}, {\n  item_id: 4296,\n  item_name: \"T-shirt blue\",\n  price: 125.61,\n  quantity: 1 \n}]"
   },
   {
     "type": "GROUP",
@@ -91,11 +91,22 @@ ___TEMPLATE_PARAMETERS___
         "help": "Example: payment card"
       },
       {
-        "type": "CHECKBOX",
-        "name": "sandbox",
-        "checkboxText": "Sandbox enviroment",
+        "type": "SELECT",
+        "name": "environment",
+        "displayName": "Environment",
+        "macrosInSelect": true,
+        "selectItems": [
+          {
+            "value": "standard",
+            "displayValue": "Standard"
+          },
+          {
+            "value": "sandbox",
+            "displayValue": "Sandbox"
+          }
+        ],
         "simpleValueType": true,
-        "help": "On \u003d true, Off \u003d false"
+        "help": "Standard or sandbox."
       },
       {
         "type": "CHECKBOX",
@@ -153,11 +164,14 @@ if (typeof data.products != 'undefined') {
 }
 
 //When  I have sandbox
-if (data.sandbox == true) {
+if (data.environment == 'sandbox') {
+logToConsole(JSON.stringify({'Point': 'Zbozi.cz - debug - sandbox On'}));
+  
   var url_api = 'https://sandbox.zbozi.cz/action/'+encodeUri(data.ShopId)+'/conversion/backend';
   post_data.sandbox = true ;
 } else {
   var url_api = 'https://www.zbozi.cz/action/'+encodeUri(data.ShopId)+'/conversion/backend';
+logToConsole(JSON.stringify({'Point': 'Zbozi.cz - debug - sandbox Off'}));  
 }
 
 //If debug_mode On, write complete JSON to Console
